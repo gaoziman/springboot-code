@@ -1,11 +1,13 @@
 package org.javatop.mybatis.mapper;
+import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.javatop.mybatis.pojo.User;
 
 /**
  * @author : Leo
- * @date  2023-11-02 21:18
+ * @date  2023-11-21 15:38
  * @version 1.0
  * @description :
  */
@@ -53,4 +55,12 @@ public interface UserMapper {
      * @return update count
      */
     int updateByPrimaryKey(User record);
+
+    int updateBatchSelective(List<User> list);
+
+
+    User selectByPhone(@Param("phone")String phone);
+
+
+
 }

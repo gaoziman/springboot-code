@@ -1,9 +1,10 @@
 package org.javatop.mybatis.service;
 
+import java.util.List;
 import org.javatop.mybatis.pojo.User;
     /**
  * @author : Leo
- * @date  2023-11-02 21:18
+ * @date  2023-11-21 15:37
  * @version 1.0
  * @description :
  */
@@ -23,4 +24,7 @@ public interface UserService{
 
     int updateByPrimaryKey(User record);
 
-}
+    int updateBatchSelective(List<User> list);
+
+        User selectByPhone(String phone);
+    }

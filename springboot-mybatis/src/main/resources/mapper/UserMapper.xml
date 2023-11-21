@@ -1,91 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.javatop.mybatis.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="org.javatop.mybatis.pojo.User">
-    <!--@mbg.generated-->
-    <!--@Table test.`user`-->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="age" jdbcType="INTEGER" property="age" />
-  </resultMap>
-
-  <sql id="Base_Column_List">
-    <!--@mbg.generated-->
-    id, `name`, `password`, age
-  </sql>
-
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated-->
-    select 
-    <include refid="Base_Column_List" />
-    from test.`user`
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    <!--@mbg.generated-->
-    delete from test.`user`
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.javatop.mybatis.pojo.User" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into test.`user` (`name`, `password`, age)
-    values (#{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER})
-  </insert>
-
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.javatop.mybatis.pojo.User" useGeneratedKeys="true">
-    <!--@mbg.generated-->
-    insert into test.`user`
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        `name`,
-      </if>
-      <if test="password != null">
-        `password`,
-      </if>
-      <if test="age != null">
+    <resultMap id="BaseResultMap" type="org.javatop.mybatis.pojo.User">
+        <!--@mbg.generated-->
+        <!--@Table `user`-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="address" jdbcType="LONGVARCHAR" property="address"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id,
+        username,
         age,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="age != null">
-        #{age,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
+        phone,
+        email,
+        address
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from `user`
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete
+        from `user`
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.javatop.mybatis.pojo.User"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into `user` (username, age, phone,
+                            email, address)
+        values (#{username,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR},
+                #{email,jdbcType=VARCHAR}, #{address,jdbcType=LONGVARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.javatop.mybatis.pojo.User"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into `user`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                username,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.javatop.mybatis.pojo.User">
+        <!--@mbg.generated-->
+        update `user`
+        <set>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.javatop.mybatis.pojo.User">
+        <!--@mbg.generated-->
+        update `user`
+        set username = #{username,jdbcType=VARCHAR},
+            age      = #{age,jdbcType=INTEGER},
+            phone    = #{phone,jdbcType=VARCHAR},
+            email    = #{email,jdbcType=VARCHAR},
+            address  = #{address,jdbcType=LONGVARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated-->
+        update `user`
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="username = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.username != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.username,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="age = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.age != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.age,jdbcType=INTEGER}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="phone = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.phone != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.phone,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="email = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.email != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.email,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="address = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.address != null">
+                        when id = #{item.id,jdbcType=INTEGER} then #{item.address,jdbcType=LONGVARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where id in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.id,jdbcType=INTEGER}
+        </foreach>
+    </update>
 
-  <update id="updateByPrimaryKeySelective" parameterType="org.javatop.mybatis.pojo.User">
-    <!--@mbg.generated-->
-    update test.`user`
-    <set>
-      <if test="name != null">
-        `name` = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        `password` = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="age != null">
-        age = #{age,jdbcType=INTEGER},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-
-  <update id="updateByPrimaryKey" parameterType="org.javatop.mybatis.pojo.User">
-    <!--@mbg.generated-->
-    update test.`user`
-    set `name` = #{name,jdbcType=VARCHAR},
-      `password` = #{password,jdbcType=VARCHAR},
-      age = #{age,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-
+    <!--auto generated by MybatisCodeHelper on 2023-11-21-->
+    <select id="selectByPhone" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from `user`
+        where phone = #{phone,jdbcType=VARCHAR}
+    </select>
 </mapper>

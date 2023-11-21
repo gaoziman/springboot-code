@@ -1,13 +1,14 @@
 package org.javatop.mybatis.service.impl;
 
 import jakarta.annotation.Resource;
+import org.springframework.stereotype.Service;
+import java.util.List;
 import org.javatop.mybatis.mapper.UserMapper;
 import org.javatop.mybatis.pojo.User;
 import org.javatop.mybatis.service.UserService;
-import org.springframework.stereotype.Service;
 /**
  * @author : Leo
- * @date  2023-11-02 21:18
+ * @date  2023-11-21 15:37
  * @version 1.0
  * @description :
  */
@@ -48,4 +49,14 @@ public class UserServiceImpl implements UserService{
         return userMapper.updateByPrimaryKey(record);
     }
 
+    @Override
+    public int updateBatchSelective(List<User> list) {
+        return userMapper.updateBatchSelective(list);
+    }
+
+
+    @Override
+    public User selectByPhone(String phone) {
+        return userMapper.selectByPhone(phone);
+    }
 }
