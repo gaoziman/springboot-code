@@ -1,4 +1,4 @@
-package org.javatop.controller;
+package org.javatop.mybatis.controller;
 
 import jakarta.annotation.Resource;
 import org.javatop.mybatis.pojo.User;

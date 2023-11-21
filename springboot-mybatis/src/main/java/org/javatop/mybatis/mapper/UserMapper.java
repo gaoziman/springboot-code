@@ -1,4 +1,4 @@
-package org.javatop.mapper;
+package org.javatop.mybatis.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.javatop.mybatis.pojo.User;

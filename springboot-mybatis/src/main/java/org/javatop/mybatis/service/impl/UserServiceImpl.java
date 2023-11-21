@@ -1,4 +1,4 @@
-package org.javatop.service.impl;
+package org.javatop.mybatis.service.impl;
 
 import jakarta.annotation.Resource;
 import org.javatop.mybatis.mapper.UserMapper;

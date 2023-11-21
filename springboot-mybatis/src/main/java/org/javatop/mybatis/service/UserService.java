@@ -1,4 +1,4 @@
-package org.javatop.service;
+package org.javatop.mybatis.service;
 
 import org.javatop.mybatis.pojo.User;
     /**

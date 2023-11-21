@@ -1,4 +1,4 @@
-package org.javatop.pojo;
+package org.javatop.mybatis.pojo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
