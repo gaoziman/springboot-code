@@ -12,6 +12,7 @@
         <module>springboot-init</module>
         <module>springboot-mybatis</module>
         <module>springboot-bigevent</module>
+        <module>springboot-token-renewal</module>
     </modules>
 
     <parent>

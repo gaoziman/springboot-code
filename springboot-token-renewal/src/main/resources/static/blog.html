@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布博客</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <table>
+    <tr>
+        <td>标题：</td>
+        <td><input type="text" name="blogTitle" ref="blogTitle" autocomplete="off" /></td>
+    </tr>
+    <tr>
+        <td>内容：</td>
+        <td><textarea name="blogContent" rows="10" ref="blogContent" autocomplete="off" cols="40" ></textarea></td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">
+            <input type="submit" value="发布" @click="submit"/>
+        </td>
+    </tr>
+    </table>
+</div>
+
+<script>
+    const appConfig = {
+        methods: {
+            submit() {
+                let url = "http://localhost:8200/blog"
+                let token = null;
+                if (sessionStorage.getItem("token") !== null) {
+                    token = JSON.parse(sessionStorage.getItem("token"));
+                }
+                axios.post(url, {},{headers: {token: token}}).then(function (response) {
+                    if (response.data.code === 200) {
+                        console.log(response.data.data);
+                    } else {
+                        alert(response.data.msg);
+                    }
+                });
+            }
+        }
+    }
+    Vue.createApp(appConfig).mount('#app')
+</script>
+</body>
+</html>
