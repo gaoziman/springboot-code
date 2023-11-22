@@ -9,37 +9,75 @@
 <body>
 <div id="app">
     <table>
-    <tr>
-        <td>标题：</td>
-        <td><input type="text" name="blogTitle" ref="blogTitle" autocomplete="off" /></td>
-    </tr>
-    <tr>
-        <td>内容：</td>
-        <td><textarea name="blogContent" rows="10" ref="blogContent" autocomplete="off" cols="40" ></textarea></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center">
-            <input type="submit" value="发布" @click="submit"/>
-        </td>
-    </tr>
+        <tr>
+            <td>标题：</td>
+            <td><input type="text" name="blogTitle" ref="blogTitle" autocomplete="off"/></td>
+        </tr>
+        <tr>
+            <td>内容：</td>
+            <td><textarea name="blogContent" rows="10" ref="blogContent" autocomplete="off" cols="40"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="发布" @click="submit"/>
+            </td>
+        </tr>
     </table>
 </div>
 
 <script>
+    // axios 请求拦截器
+    axios.interceptors.request.use(
+        (config) => {
+            // 在发送请求之前做些什么
+            let token = null;
+            let url = config.url
+            if (sessionStorage.getItem("accessToken") != null && url.indexOf("/newToken") == -1) {
+                token = JSON.parse(sessionStorage.getItem("accessToken"));
+                config.headers['accessToken'] = token;
+            }
+            return config;
+        }, (error) => {
+            // 对请求错误做些什么
+            return Promise.reject(error);
+        });
+
+     function getNewToken() {
+        let url = "http://localhost:8200/newToken";
+        let token = null;
+        if (sessionStorage.getItem("refreshToken") != null) {
+            token = JSON.parse(sessionStorage.getItem("refreshToken"));
+        }
+        return axios.get(url, {headers: {accessToken: token}, isRefreshToken: true})
+    }
+
+    // axios 响应拦截器
+    axios.interceptors.response.use(
+        async (res) => {
+        // 401 进行自动续期
+        if (res.data.code == 401 && !res.config.isRefreshToken) {
+            // 自动续期
+            const res2 = await getNewToken();
+            if (res2.data.code == 200) {
+                console.log("token自动续期成功" + new Date().toLocaleString())
+                sessionStorage.setItem("accessToken", JSON.stringify(res2.data.data.accessToken));
+                sessionStorage.setItem("refreshToken", JSON.stringify(res2.data.data.refreshToken));
+                //重新发起请求
+                res = await axios.request(res.config);
+            }
+
+        }
+        return res;
+    }, (error) => {
+        // 对响应错误做点什么
+        return Promise.reject(error);
+    })
     const appConfig = {
         methods: {
             submit() {
                 let url = "http://localhost:8200/blog"
-                let token = null;
-                if (sessionStorage.getItem("token") !== null) {
-                    token = JSON.parse(sessionStorage.getItem("token"));
-                }
-                axios.post(url, {},{headers: {token: token}}).then(function (response) {
-                    if (response.data.code === 200) {
-                        console.log(response.data.data);
-                    } else {
-                        alert(response.data.msg);
-                    }
+                axios.post(url).then((response) => {
+                     console.log(response.data.data);
                 });
             }
         }

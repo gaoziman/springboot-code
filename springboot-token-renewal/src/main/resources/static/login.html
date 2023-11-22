@@ -35,7 +35,8 @@
                    password: this.$refs.password.value
                }).then(function (response) {
                    if (response.data.code === 200) {
-                       sessionStorage.setItem("token", JSON.stringify(response.data.data));
+                       sessionStorage.setItem("accessToken", JSON.stringify(response.data.data.accessToken));
+                       sessionStorage.setItem("refreshToken", JSON.stringify(response.data.data.refreshToken));
                        // //跳转博客页面
                        location.href = "blog.html";
                    } else {

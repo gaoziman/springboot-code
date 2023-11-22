@@ -31,23 +31,24 @@ public class JwtFilter  implements Filter {
             filterChain.doFilter(request, response);
             return;
         }
-        String requestURI = request.getRequestURI();
-        System.out.println("requestURI = " + requestURI);
         // 直接放行
         if (request.getRequestURI().contains("/login")) {
             filterChain.doFilter(request, response);
             return;
         }
-        String token = request.getHeader("token");
+        String token = request.getHeader("accessToken");
         if (!Strings.hasText(token)) {
             //给出错误消息提示
             Result result = new Result(500, "令牌缺失", null);
             ResponseUtil.write(result,response);
             return;
         }
-        if (!JwtUtils.parseToken(token).equals("jwtdemo")) {
+        try {
+            JwtUtils.parseToken(token);
+        }
+        catch (Exception e) {
             //给出错误消息提示
-            Result result = new Result(401, "token有误", null);
+            Result result = new Result(401, "失败", "令牌过期");
             ResponseUtil.write(result,response);
             return;
         }
