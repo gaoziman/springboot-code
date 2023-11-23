@@ -28,7 +28,7 @@ public class UserController {
     */
     @GetMapping("/{id}")
     public User getById(@PathVariable Integer id) {
-    return userServiceImpl.selectByPrimaryKey(id);
+    return userServiceImpl.selectById(id);
     }
 
 

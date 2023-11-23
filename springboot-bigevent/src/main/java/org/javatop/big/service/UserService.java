@@ -1,10 +1,12 @@
-package org.javatop.mybatis.service;
+package org.javatop.big.service;
 
 import java.util.List;
-import org.javatop.mybatis.pojo.User;
-    /**
+import org.javatop.big.pojo.User;
+import org.javatop.big.utils.Result;
+
+/**
  * @author : Leo
- * @date  2023-11-21 15:37
+ * @date  2023-11-23 23:25
  * @version 1.0
  * @description :
  */
@@ -18,6 +20,11 @@ public interface UserService{
 
     int insertSelective(User record);
 
+    /**
+     * 根据id查询用户
+     * @param id 用户id
+     * @return 用户
+     */
     User selectById(Integer id);
 
     int updateByPrimaryKeySelective(User record);
@@ -26,5 +33,5 @@ public interface UserService{
 
     int updateBatchSelective(List<User> list);
 
-        User selectByPhone(String phone);
+     Result register(User user);
     }
