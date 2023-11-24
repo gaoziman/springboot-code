@@ -123,6 +123,7 @@ public class UserServiceImpl implements UserService{
         User queryUser = userMapper.selectById(id);
         if (ObjectUtil.isNotNull(queryUser)){
             user.setId(id);
+            user.setUpdateTime(LocalDateTime.now());
             userMapper.updateByPrimaryKeySelective(user);
             return Result.success("更新成功!");
         }else {
