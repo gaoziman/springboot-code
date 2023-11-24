@@ -6,6 +6,7 @@ import org.javatop.big.service.UserService;
 import org.javatop.big.utils.BeanUtils;
 import org.javatop.big.utils.JwtUtil;
 import org.javatop.big.utils.Result;
+import org.javatop.big.utils.ThreadLocalUtil;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
@@ -64,13 +65,12 @@ public class UserController {
 
     /**
      * 获取用户详细信息
-     * @param token token
      * @return 返回结果
      */
     @GetMapping("/userInfo")
-    public Result userInfo(@RequestHeader("Authorization") String token) {
-        // 解析token
-        Map<String, Object> map = JwtUtil.parseToken(token);
+    public Result userInfo() {
+        // 从ThreadLocal中获取用户信息
+        Map<String, Object> map = ThreadLocalUtil.get();
         Integer id = (Integer) map.get("id");
         // 查询用户
         User user = userService.selectById(id);

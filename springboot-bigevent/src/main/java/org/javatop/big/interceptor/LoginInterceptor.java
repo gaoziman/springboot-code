@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.javatop.big.utils.JwtUtil;
 import org.javatop.big.utils.ResponseUtil;
 import org.javatop.big.utils.Result;
+import org.javatop.big.utils.ThreadLocalUtil;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -33,6 +34,8 @@ public class LoginInterceptor implements HandlerInterceptor {
         try {
             // 验证token
             Map<String, Object> map = JwtUtil.parseToken(token);
+            // 把信息存入ThreadLocal
+            ThreadLocalUtil.set(map);
             return true;
         } catch (Exception e) {
             //给出错误信息
