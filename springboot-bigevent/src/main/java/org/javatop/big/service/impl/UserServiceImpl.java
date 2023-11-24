@@ -2,12 +2,15 @@ package org.javatop.big.service.impl;
 
 import cn.hutool.core.util.ObjectUtil;
 import jakarta.annotation.Resource;
+import org.javatop.big.utils.JwtUtil;
 import org.javatop.big.utils.Md5Util;
 import org.javatop.big.utils.Result;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import org.javatop.big.mapper.UserMapper;
@@ -89,4 +92,41 @@ public class UserServiceImpl implements UserService{
         }
     }
 
+
+    @Override
+    public Result login(String username, String password) {
+        //1.通过用户名查询用户
+        User user = userMapper.selectByUserName(username);
+        //2.判断用户是否存在以及密码是否正确
+        if(ObjectUtil.isNotNull(user) && Objects.equals(Md5Util.getMD5String(password),user.getPassword()) ){
+            //3.生成token
+            Map<String, Object> claims = new HashMap<>();
+            claims.put("id", user.getId());
+            String token = JwtUtil.generateToken(claims);
+            return Result.success(token);
+        }else {
+            return Result.error("用户名或密码错误");
+        }
+    }
+
+
+    /**
+     * 更新用户信息
+     * @param token token
+     * @param user 用户信息
+     * @return 返回结果
+     */
+    @Override
+    public Result updateInfo(String token, User user) {
+        Map<String, Object> map = JwtUtil.parseToken(token);
+        Integer id = (Integer) map.get("id");
+        User queryUser = userMapper.selectById(id);
+        if (ObjectUtil.isNotNull(queryUser)){
+            user.setId(id);
+            userMapper.updateByPrimaryKeySelective(user);
+            return Result.success("更新成功!");
+        }else {
+            return Result.error("用户不存在!");
+        }
+    }
 }

@@ -33,5 +33,27 @@ public interface UserService{
 
     int updateBatchSelective(List<User> list);
 
+
+    /**
+     * 用户注册
+     * @param user 用户信息
+     * @return 返回结果
+     */
      Result register(User user);
-    }
+
+    /**
+     * 用户登录
+     * @param username 用户名
+     * @param password 密码
+     * @return 返回结果
+     */
+     Result login(String username, String password);
+
+    /**
+     * 更新用户信息
+     * @param token token
+     * @param user 用户信息
+     * @return 返回结果
+     */
+    Result updateInfo(String token, User user);
+}
