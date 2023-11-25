@@ -5,6 +5,7 @@ import jakarta.annotation.Resource;
 import org.javatop.big.utils.JwtUtil;
 import org.javatop.big.utils.Md5Util;
 import org.javatop.big.utils.Result;
+import org.javatop.big.utils.ThreadLocalUtil;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -112,13 +113,12 @@ public class UserServiceImpl implements UserService{
 
     /**
      * 更新用户信息
-     * @param token token
      * @param user 用户信息
      * @return 返回结果
      */
     @Override
-    public Result updateInfo(String token, User user) {
-        Map<String, Object> map = JwtUtil.parseToken(token);
+    public Result updateInfo(User user) {
+        Map<String, Object> map = ThreadLocalUtil.get();
         Integer id = (Integer) map.get("id");
         User queryUser = userMapper.selectById(id);
         if (ObjectUtil.isNotNull(queryUser)){
@@ -128,6 +128,47 @@ public class UserServiceImpl implements UserService{
             return Result.success("更新成功!");
         }else {
             return Result.error("用户不存在!");
+        }
+    }
+
+
+    /**
+     * 更新用户头像
+     * @param url 头像地址
+     * @return 返回结果
+     */
+    @Override
+    public Result updateAvatar(String url) {
+        Map<String, Object> map = ThreadLocalUtil.get();
+        Integer id = (Integer) map.get("id");
+        userMapper.updateUserPicById(url,id);
+        return Result.success("更新头像成功!");
+    }
+
+
+    @Override
+    public Result updatePwd(Map<String, String> map) {
+        Map<String, Object> clams = ThreadLocalUtil.get();
+        Integer id = (Integer) clams.get("id");
+        User user = userMapper.selectById(id);
+        String oldPwd = map.get("oldPwd");
+        String newPwd = map.get("newPwd");
+        String rePwd = map.get("rePwd");
+        // 验证这些密码的有效性
+        if (ObjectUtil.isNotNull(oldPwd) && ObjectUtil.isNotNull(newPwd) && ObjectUtil.isNotNull(rePwd)){
+            if (!Md5Util.getMD5String(oldPwd).equals(user.getPassword())){
+                return Result.success("旧密码错误");
+            }
+            if (oldPwd.equals(newPwd)){
+                return Result.success("新密码不能和旧密码相同");
+            }
+            if (!newPwd.equals(rePwd)){
+                return Result.success("两次密码不一致");
+            }
+             userMapper.updatePasswordById(Md5Util.getMD5String(newPwd), id);
+             return Result.success("密码修改成功");
+        }else {
+            return Result.error("必要参数填写有误!!!");
         }
     }
 }

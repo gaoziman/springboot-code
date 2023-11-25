@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.javatop.big.pojo.User;
+import org.javatop.big.utils.Result;
 
 /**
  * @author : Leo
@@ -62,6 +63,16 @@ public interface UserMapper {
     User selectByUserName(@Param("username")String username);
 
 
+    /**
+     * 更新用户头像
+     *
+     * @param url 头像地址
+     * @return 受影响行数
+     */
+    int updateUserPicById(@Param("userPic")String url,@Param("id")Integer id);
+
+
+    int updatePasswordById(@Param("password")String password,@Param("id")Integer id);
 
 
 }

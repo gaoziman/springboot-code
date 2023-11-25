@@ -1,5 +1,7 @@
 package org.javatop.big.controller;
 
+import cn.hutool.core.util.ObjectUtil;
+import org.hibernate.validator.constraints.URL;
 import org.javatop.big.pojo.User;
 import org.javatop.big.pojo.vo.UserVo;
 import org.javatop.big.service.UserService;
@@ -7,6 +9,7 @@ import org.javatop.big.utils.BeanUtils;
 import org.javatop.big.utils.JwtUtil;
 import org.javatop.big.utils.Result;
 import org.javatop.big.utils.ThreadLocalUtil;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.annotation.Resource;
@@ -45,7 +48,7 @@ public class UserController {
      * @return 返回结果
      */
     @PostMapping("/register")
-    public Result register(@RequestBody User user) {
+    public Result register(@RequestBody @Validated User user) {
         return userService.register(user);
     }
 
@@ -86,9 +89,25 @@ public class UserController {
      * @return 返回结果
      */
     @PutMapping("/update")
-    public Result update(@RequestHeader("Authorization") String token,@RequestBody User user) {
-        return userService.updateInfo(token,user);
+    public Result update(@RequestBody User user) {
+        return userService.updateInfo(user);
     }
 
 
+    /**
+     * 更新用户头像
+     * @param url
+     * @return
+     */
+    @PatchMapping("/updateAvatar")
+    public Result updateAvatar(@RequestParam @URL String url) {
+        return userService.updateAvatar(url);
+    }
+
+
+
+    @PatchMapping("updatePwd")
+    public  Result updatePwd(@RequestBody Map<String, String> map) {
+        return userService.updatePwd(map);
+    }
 }

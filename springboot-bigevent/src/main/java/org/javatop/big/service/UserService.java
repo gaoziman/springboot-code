@@ -1,6 +1,8 @@
 package org.javatop.big.service;
 
 import java.util.List;
+import java.util.Map;
+
 import org.javatop.big.pojo.User;
 import org.javatop.big.utils.Result;
 
@@ -51,9 +53,18 @@ public interface UserService{
 
     /**
      * 更新用户信息
-     * @param token token
      * @param user 用户信息
      * @return 返回结果
      */
-    Result updateInfo(String token, User user);
+    Result updateInfo( User user);
+
+
+    /**
+     * 更新用户头像
+     * @param url 头像地址
+     * @return 返回结果
+     */
+    Result updateAvatar(String url);
+
+    Result updatePwd(Map<String, String> map);
 }
