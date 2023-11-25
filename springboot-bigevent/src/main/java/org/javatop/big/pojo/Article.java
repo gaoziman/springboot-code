@@ -5,6 +5,7 @@ import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.javatop.big.anno.State;
 
 /**
  * @author : Leo
@@ -40,6 +41,7 @@ public class Article implements Serializable {
     /**
     * 文章状态: 只能是[已发布] 或者 [草稿]
     */
+    @State
     private String state;
 
     /**

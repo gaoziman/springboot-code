@@ -1,7 +1,9 @@
 package org.javatop.big.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.javatop.big.pojo.Article;
 
 /**
@@ -56,4 +58,24 @@ public interface ArticleMapper {
     int updateById(Article record);
 
     int updateBatchSelective(List<Article> list);
+
+
+    /**
+     * 根据分类id和状态查询文章
+     * @param categoryId 分类id
+     * @param state 状态
+     * @return 返回结果
+     */
+    List<Article> selectAllByCategoryIdAndState(@Param("categoryId")Integer categoryId, @Param("state")String state, @Param("createUser") Integer createUser);
+
+
+
+    Article selectByCreateUserAndId(@Param("createUser") Integer createUser,@Param("id")Integer id);
+
+
+
+
+
+
+
 }

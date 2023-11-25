@@ -147,9 +147,9 @@ public class CategoryServiceImpl implements CategoryService{
             if (ObjectUtil.isNotNull(queryCategory)){
                 int i = categoryMapper.deleteById(id);
                 if (i > 0) {
-                    return Result.success("文章删除成功!!!");
+                    return Result.success("分类删除成功!!!");
                 } else {
-                    return Result.error("文章删除失败!!!");
+                    return Result.error("分类删除失败!!!");
                 }
             }else {
                 return Result.error("不能对此分类进行删除操作!!!");
