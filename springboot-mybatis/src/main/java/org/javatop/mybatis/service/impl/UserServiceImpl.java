@@ -45,8 +45,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public int updateByIdKey(User record) {
-        return userMapper.updateByIdKey(record);
+    public int updateById(User record) {
+        return userMapper.updateById(record);
     }
 
     @Override

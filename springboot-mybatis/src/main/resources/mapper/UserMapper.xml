@@ -102,7 +102,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByIdKey" parameterType="org.javatop.mybatis.pojo.User">
+    <update id="updateById" parameterType="org.javatop.mybatis.pojo.User">
         <!--@mbg.generated-->
         update `user`
         set username = #{username,jdbcType=VARCHAR},

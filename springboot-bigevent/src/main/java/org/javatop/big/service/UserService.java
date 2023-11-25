@@ -31,7 +31,7 @@ public interface UserService{
 
     int updateByIdSelective(User record);
 
-    int updateByIdKey(User record);
+    int updateById(User record);
 
     int updateBatchSelective(List<User> list);
 
