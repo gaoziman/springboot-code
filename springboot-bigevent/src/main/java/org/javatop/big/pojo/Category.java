@@ -2,6 +2,8 @@ package org.javatop.big.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,12 +26,13 @@ public class Category implements Serializable {
 
     /**
     * 分类名称
-    */
+    */@NotEmpty
     private String categoryName;
 
     /**
     * 分类别名
     */
+    @NotEmpty
     private String categoryAlias;
 
     /**

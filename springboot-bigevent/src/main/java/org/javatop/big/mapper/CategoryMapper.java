@@ -1,4 +1,6 @@
 package org.javatop.big.mapper;
+import org.apache.ibatis.annotations.Param;
+import java.util.Date;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
@@ -56,4 +58,18 @@ public interface CategoryMapper {
     int updateById(Category record);
 
     int updateBatchSelective(List<Category> list);
+
+    List<Category> selectListByCondition(Category category);
+
+
+    /**
+     * 通过当前用户ID以及分类ID查询分类
+     * @param createUser 用户ID
+     * @param id 分类id
+     * @return 返回结果
+     */
+    Category selectByCreateUserAndId(@Param("createUser")Integer createUser,@Param("id")Integer id);
+
+
+
 }
