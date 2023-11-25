@@ -54,7 +54,7 @@ public interface UserMapper {
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKey(User record);
+    int updateByIdKey(User record);
 
     int updateBatchSelective(List<User> list);
 

@@ -126,7 +126,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="org.javatop.big.pojo.User">
+    <update id="updateByIdKey" parameterType="org.javatop.big.pojo.User">
         <!--@mbg.generated-->
         update `user`
         set username    = #{username,jdbcType=VARCHAR},
