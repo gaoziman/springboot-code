@@ -31,7 +31,7 @@
         from `user`
         where id = #{id,jdbcType=INTEGER}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteById" parameterType="java.lang.Integer">
         <!--@mbg.generated-->
         delete
         from `user`
@@ -98,7 +98,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="org.javatop.big.pojo.User">
+    <update id="updateByIdSelective" parameterType="org.javatop.big.pojo.User">
         <!--@mbg.generated-->
         update `user`
         <set>

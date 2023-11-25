@@ -19,7 +19,7 @@ public interface UserMapper {
      * @param id primaryKey
      * @return deleteCount
      */
-    int deleteByPrimaryKey(Integer id);
+    int deleteById(Integer id);
 
     /**
      * insert record to table
@@ -47,7 +47,7 @@ public interface UserMapper {
      * @param record the updated record
      * @return update count
      */
-    int updateByPrimaryKeySelective(User record);
+    int updateByIdSelective(User record);
 
     /**
      * update record

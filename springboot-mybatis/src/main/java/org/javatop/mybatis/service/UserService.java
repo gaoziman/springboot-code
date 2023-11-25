@@ -12,7 +12,7 @@ import org.javatop.mybatis.pojo.User;
 public interface UserService{
 
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteById(Integer id);
 
     int insert(User record);
 
@@ -20,7 +20,7 @@ public interface UserService{
 
     User selectById(Integer id);
 
-    int updateByPrimaryKeySelective(User record);
+    int updateByIdSelective(User record);
 
     int updateByPrimaryKey(User record);
 

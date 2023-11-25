@@ -20,8 +20,8 @@ public class UserServiceImpl implements UserService{
     private UserMapper userMapper;
 
     @Override
-    public int deleteByPrimaryKey(Integer id) {
-        return userMapper.deleteByPrimaryKey(id);
+    public int deleteById(Integer id) {
+        return userMapper.deleteById(id);
     }
 
     @Override
@@ -40,8 +40,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public int updateByPrimaryKeySelective(User record) {
-        return userMapper.updateByPrimaryKeySelective(record);
+    public int updateByIdSelective(User record) {
+        return userMapper.updateByIdSelective(record);
     }
 
     @Override

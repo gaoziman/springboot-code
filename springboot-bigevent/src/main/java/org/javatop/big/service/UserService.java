@@ -16,7 +16,7 @@ import org.javatop.big.utils.Result;
 public interface UserService{
 
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteById(Integer id);
 
     int insert(User record);
 
@@ -29,7 +29,7 @@ public interface UserService{
      */
     User selectById(Integer id);
 
-    int updateByPrimaryKeySelective(User record);
+    int updateByIdSelective(User record);
 
     int updateByPrimaryKey(User record);
 
