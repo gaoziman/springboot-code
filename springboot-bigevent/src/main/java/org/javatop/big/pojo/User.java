@@ -5,6 +5,10 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,21 +31,27 @@ public class User implements Serializable {
     /**
     * 用户名
     */
+    @NotEmpty
+    @Pattern(regexp = "^[a-zA-Z0-9]{4,16}$")
     private String username;
 
     /**
     * 密码
     */
+    @NotEmpty
+    @Pattern(regexp = "^[a-zA-Z0-9]{4,16}$")
     private String password;
 
     /**
     * 昵称
     */
+    @NotEmpty
     private String nickname;
 
     /**
     * 邮箱
     */
+    @Email
     private String email;
 
     /**
