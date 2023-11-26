@@ -4,15 +4,15 @@ import cn.hutool.core.util.ObjectUtil;
 import com.google.common.base.Strings;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.javatop.big.utils.JwtUtil;
-import org.javatop.big.utils.ResponseUtil;
-import org.javatop.big.utils.Result;
-import org.javatop.big.utils.ThreadLocalUtil;
+import org.javatop.big.utils.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author : Leo
@@ -23,6 +23,9 @@ import java.util.Map;
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
 
+    @Autowired
+    private RedisCache redisCache;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("Authorization");
@@ -32,9 +35,13 @@ public class LoginInterceptor implements HandlerInterceptor {
             ResponseUtil.write(result,response);
         }
         try {
+            if (ObjectUtil.isNull(redisCache.getKey(token))) {
+               throw  new RuntimeException();
+            }
             // 验证token
             Map<String, Object> map = JwtUtil.parseToken(token);
             // 把信息存入ThreadLocal
+            // 判断redis中的token和header中的token是否一致
             ThreadLocalUtil.set(map);
             return true;
         } catch (Exception e) {

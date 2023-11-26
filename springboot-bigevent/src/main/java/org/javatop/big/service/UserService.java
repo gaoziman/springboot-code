@@ -66,5 +66,5 @@ public interface UserService{
      */
     Result updateAvatar(String url);
 
-    Result updatePwd(Map<String, String> map);
+    Result updatePwd(Map<String, String> map,String token);
 }

@@ -2,10 +2,8 @@ package org.javatop.big.service.impl;
 
 import cn.hutool.core.util.ObjectUtil;
 import jakarta.annotation.Resource;
-import org.javatop.big.utils.JwtUtil;
-import org.javatop.big.utils.Md5Util;
-import org.javatop.big.utils.Result;
-import org.javatop.big.utils.ThreadLocalUtil;
+import org.javatop.big.utils.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -13,10 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 import org.javatop.big.mapper.UserMapper;
 import org.javatop.big.pojo.User;
 import org.javatop.big.service.UserService;
+import org.springframework.web.bind.annotation.RequestHeader;
+
 /**
  * @author : Leo
  * @date  2023-11-23 23:25
@@ -29,6 +30,9 @@ public class UserServiceImpl implements UserService{
 
     @Resource
     private UserMapper userMapper;
+
+    @Autowired
+    private RedisCache redisCache;
 
     @Override
     public int deleteById(Integer id) {
@@ -103,7 +107,10 @@ public class UserServiceImpl implements UserService{
             //3.生成token
             Map<String, Object> claims = new HashMap<>();
             claims.put("id", user.getId());
+            claims.put("username", username);
             String token = JwtUtil.generateToken(claims);
+            //把token存入redis中
+            redisCache.setKey(token,token,1, TimeUnit.HOURS);
             return Result.success(token);
         }else {
             return Result.error("用户名或密码错误");
@@ -147,7 +154,7 @@ public class UserServiceImpl implements UserService{
 
 
     @Override
-    public Result updatePwd(Map<String, String> map) {
+    public Result updatePwd(Map<String, String> map, String token) {
         Map<String, Object> clams = ThreadLocalUtil.get();
         Integer id = (Integer) clams.get("id");
         User user = userMapper.selectById(id);
@@ -166,6 +173,7 @@ public class UserServiceImpl implements UserService{
                 return Result.success("两次密码不一致");
             }
              userMapper.updatePasswordById(Md5Util.getMD5String(newPwd), id);
+             redisCache.deleteObject(token);
              return Result.success("密码修改成功");
         }else {
             return Result.error("必要参数填写有误!!!");
