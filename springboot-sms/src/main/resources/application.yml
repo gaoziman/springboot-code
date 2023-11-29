@@ -1,5 +1,5 @@
 server:
-  port: 8100
+  port: 8300
 spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
@@ -18,7 +18,7 @@ spring:
       # 端口，默认为6379
       port: 6379
       # 数据库索引
-      database: 2
+      database: 4
       # 密码
       password:
       # 连接超时时间
@@ -38,11 +38,9 @@ spring:
 
 
 
+javatop:
+  sms:
+    accountId: 2c94811c8b1e335b018c1af4cd5d3c3b
+    authToken: 3a6cb7952dc44d608b5ed730eef17138
+    appId: 2c94811c8b1e335b018c1af6d41d3c47
 
-#阿里云文件上传
-aliyun:
-  oss:
-    endpoint: oss-cn-hangzhou.aliyuncs.com
-    keyid: LTAI5t982gXi7A72gAa9yugE
-    keysecret:  Mi9ZsSWLGkvFoMiLNiZ71hHFzVso30
-    bucketname: gaoziman

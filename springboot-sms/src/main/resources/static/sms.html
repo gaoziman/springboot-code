@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发送短信验证码</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    输入手机号 : <input type="tel" name="phone" ref="phone" autocomplete="off" />
+    <button @click="send">发送验证码</button>
+
+    <div>
+        验证码 : {{sendMessage}}
+    </div>
+    <br>
+
+    输入验证码 : <input type="tel" name="code" ref="code" autocomplete="off" />
+    <button @click="check">验证</button>
+    <div>
+       检验验证码: {{checkMessage}}
+    </div>
+</div>
+
+<script>
+    const appConfig = {
+        data(){
+            return {
+                sendMessage: "init",
+                checkMessage: "init"
+            }
+        },
+        methods: {
+            send() {
+                let url = "http://localhost:8300/send"
+                axios.post(url, {
+                    phone: this.$refs.phone.value
+                }).then(function (response) {
+                    if (response.data.code === 200) {
+                        alert("短信发送成功");
+                        alert(response.data.message)
+                        this.sendMessage = response.data.message;
+                    } else {
+                        alert(response.data.msg);
+                    }
+                }
+                ).catch(function (error) {
+                    alert(error);
+                });
+            },
+            check() {
+                let url = "http://localhost:8300/validate"
+                axios.post(url, {
+                    phone: this.$refs.phone.value,
+                    code: this.$refs.code.value
+                }).then(function (response) {
+                    if (response.data.code === 200) {
+                        alert("验证成功");
+                    } else {
+                        alert(response.data.message);
+                    }
+                });
+            }
+        }
+    }
+
+    Vue.createApp(appConfig).mount('#app')
+</script>
+
+
+</body>
+</html>

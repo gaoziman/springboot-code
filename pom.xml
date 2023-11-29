@@ -13,6 +13,7 @@
         <module>springboot-mybatis</module>
         <module>springboot-bigevent</module>
         <module>springboot-token-renewal</module>
+        <module>springboot-sms</module>
     </modules>
 
     <parent>
