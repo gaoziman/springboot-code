@@ -1,6 +1,8 @@
 server:
   port: 8100
 spring:
+  application:
+    name:  big-event-admin
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
@@ -35,7 +37,13 @@ spring:
           max-wait: -1ms
 
 
-
+logging:
+  level:
+    org.javatop: debug
+  pattern:
+    dateformat: HH:mm:ss:SSS
+  file:
+    path: "logs/${spring.application.name}"
 
 
 
