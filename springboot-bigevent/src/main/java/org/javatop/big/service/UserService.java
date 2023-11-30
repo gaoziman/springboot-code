@@ -38,10 +38,11 @@ public interface UserService{
 
     /**
      * 用户注册
-     * @param user 用户信息
+     * @param username 用户名
+     * @param password 密码
      * @return 返回结果
      */
-     Result register(User user);
+     Result register(String username,String password);
 
     /**
      * 用户登录

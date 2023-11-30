@@ -24,6 +24,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/user")
+@CrossOrigin
 public class UserController {
 
     @Resource
@@ -43,19 +44,18 @@ public class UserController {
 
     /**
      * 注册用户
-     *
-     * @param user 用户信息
+     * @param username 用户名
+     * @param password 密码
      * @return 返回结果
      */
     @PostMapping("/register")
-    public Result register(@RequestBody @Validated User user) {
-        return userService.register(user);
+    public Result register(String username,String password) {
+        return userService.register(username,password);
     }
 
 
     /**
      * 用户登录
-     *
      * @param username 用户名
      * @param password 密码
      * @return 返回结果

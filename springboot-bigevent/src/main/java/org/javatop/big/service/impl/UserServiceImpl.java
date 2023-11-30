@@ -72,23 +72,24 @@ public class UserServiceImpl implements UserService{
 
     /**
      * 注册用户
-     * @param user 用户信息
-     * @return 返回结果
+     * @param username 用户名
+     * @param password 密码
+     * @return
      */
     @Override
-    public Result register(User user) {
+    public Result register(String username,String password) {
         //1.查询用户
-        User queryUser = userMapper.selectByUserName(user.getUsername());
+        User queryUser = userMapper.selectByUserName(username);
         //2.判断用户是否存在
         if (ObjectUtil.isNull(queryUser)){
+            User user = new User();
             // 不存在则进行注册
             user.setCreateTime(LocalDateTime.now());
             user.setUpdateTime(LocalDateTime.now());
             // 3.密码加密
-            user.setPassword(Md5Util.getMD5String(user.getPassword()));
-            user.setEmail(user.getEmail().toLowerCase());
-            user.setUsername(user.getUsername().toLowerCase());
-            user.setNickname(user.getNickname().toLowerCase());
+            user.setPassword(Md5Util.getMD5String(password));
+            user.setUsername(username);
+            // 4.默认头像
             user.setUserPic("https://gaoziman.oss-cn-hangzhou.aliyuncs.com/utools-bed/14.jpg");
             userMapper.insertSelective(user);
             return Result.success();
