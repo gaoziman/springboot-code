@@ -29,11 +29,6 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("Authorization");
-        if (ObjectUtil.isNull(token)) {
-            //给出错误消息提示
-            Result result = new Result(500, "令牌缺失", null);
-            ResponseUtil.write(result,response);
-        }
         try {
             if (ObjectUtil.isNull(redisCache.getKey(token))) {
                throw  new RuntimeException();

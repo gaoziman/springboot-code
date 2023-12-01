@@ -96,12 +96,13 @@ public class UserController {
 
     /**
      * 更新用户头像
-     * @param url
+     * @param avatarUrl
      * @return
      */
     @PatchMapping("/updateAvatar")
-    public Result updateAvatar(@RequestParam @URL String url) {
-        return userService.updateAvatar(url);
+    public Result updateAvatar(@RequestParam String avatarUrl){
+        System.out.println("url = " + avatarUrl);
+        return userService.updateAvatar(avatarUrl);
     }
 
 

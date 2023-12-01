@@ -129,7 +129,6 @@ public class ArticleServiceImpl implements ArticleService{
         Map map = ThreadLocalUtil.get();
         Integer userId = (Integer) map.get("id");
         if (ObjectUtil.isNotNull(article)){
-            article.setCreateUser(userId);
             article.setCreateTime(new Date());
             article.setUpdateTime(new Date());
             article.setCreateUser(userId);

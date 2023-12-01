@@ -48,7 +48,7 @@ public class CategoryController {
      * @return 返回结果
      */
     @PutMapping
-    public Result update(@RequestBody @Validated Category category) {
+    public Result update(@RequestBody  Category category) {
         return categoryService.updateCategory(category);
     }
 

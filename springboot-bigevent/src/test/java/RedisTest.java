@@ -1,4 +1,4 @@
-import org.javatop.big.SpringBootBigEventApplication;
+import org.javatop.big.BigEventApplication;
 import org.javatop.big.utils.RedisCache;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2023-11-26 1:35
  * @description :
  */
-@SpringBootTest(classes = {SpringBootBigEventApplication.class})
+@SpringBootTest(classes = {BigEventApplication.class})
 public class RedisTest {
     @Autowired
     private RedisCache redisCache;

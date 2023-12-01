@@ -12,9 +12,9 @@ import org.springframework.core.env.Environment;
  * @description :
  */
 @SpringBootApplication
-public class SpringBootBigEventApplication {
+public class BigEventApplication {
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(SpringBootBigEventApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(BigEventApplication.class, args);
         Environment environment = context.getBean(Environment.class);
 
         System.out.println("访问链接：http://localhost:" + environment.getProperty("server.port"));
