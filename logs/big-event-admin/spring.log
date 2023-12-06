@@ -1876,3 +1876,71 @@ Caused by: java.io.IOException: Connection reset by peer
 15:41:24:459  INFO 7096 --- [http-nio-8100-exec-1] o.javatop.big.controller.OssController   : ------OSS文件上传成功------https://gaoziman.oss-cn-hangzhou.aliyuncs.com/test/2023-12-01/0cf89311393f4bef9986c7518b14206d.png
 15:42:28:971  INFO 7096 --- [http-nio-8100-exec-4] o.javatop.big.controller.OssController   : ------OSS文件上传成功------https://gaoziman.oss-cn-hangzhou.aliyuncs.com/test/2023-12-01/1d9ad75e88424460860eaccd91954b06.png
 15:45:28:714  INFO 7096 --- [http-nio-8100-exec-3] o.javatop.big.controller.OssController   : ------OSS文件上传成功------https://gaoziman.oss-cn-hangzhou.aliyuncs.com/test/2023-12-01/90447f254bd94b3185c1cba52724a50e.png
+15:46:28:178  INFO 24868 --- [main] org.javatop.big.BigEventApplication      : Starting BigEventApplication using Java 17.0.9 with PID 24868 (D:\IDEA Workplace\Leo-code\springboot-code\springboot-bigevent\target\classes started by Administrator in D:\IDEA Workplace\Leo-code\springboot-code)
+15:46:28:180 DEBUG 24868 --- [main] org.javatop.big.BigEventApplication      : Running with Spring Boot v3.0.5, Spring v6.0.7
+15:46:28:180  INFO 24868 --- [main] org.javatop.big.BigEventApplication      : No active profile set, falling back to 1 default profile: "default"
+15:46:28:570  INFO 24868 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+15:46:28:572  INFO 24868 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+15:46:28:589  INFO 24868 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+15:46:28:944  INFO 24868 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8100 (http)
+15:46:28:950  INFO 24868 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+15:46:28:950  INFO 24868 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+15:46:28:993  INFO 24868 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+15:46:28:993  INFO 24868 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 785 ms
+15:46:29:670  INFO 24868 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8100 (http) with context path ''
+15:46:29:676  INFO 24868 --- [main] org.javatop.big.BigEventApplication      : Started BigEventApplication in 1.767 seconds (process running for 2.048)
+15:46:35:700  INFO 24868 --- [http-nio-8100-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+15:46:35:700  INFO 24868 --- [http-nio-8100-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+15:46:35:702  INFO 24868 --- [http-nio-8100-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+15:46:36:551  INFO 24868 --- [http-nio-8100-exec-1] o.javatop.big.controller.OssController   : ------OSS文件上传成功------https://gaoziman.oss-cn-hangzhou.aliyuncs.com/test/2023-12-01/e9661ade46f94cdd86cdfdc9d2c2024e.jpg
+15:46:40:333  INFO 24868 --- [http-nio-8100-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+15:46:40:466  INFO 24868 --- [http-nio-8100-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@621f5e9a
+15:46:40:469  INFO 24868 --- [http-nio-8100-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+15:46:40:477 DEBUG 24868 --- [http-nio-8100-exec-2] o.j.b.m.UserMapper.updateUserPicById     : ==>  Preparing: update `user` set user_pic=? where id=?
+15:46:40:502 DEBUG 24868 --- [http-nio-8100-exec-2] o.j.b.m.UserMapper.updateUserPicById     : ==> Parameters: https://gaoziman.oss-cn-hangzhou.aliyuncs.com/test/2023-12-01/e9661ade46f94cdd86cdfdc9d2c2024e.jpg(String), 18(Integer)
+15:46:40:505 DEBUG 24868 --- [http-nio-8100-exec-2] o.j.b.m.UserMapper.updateUserPicById     : <==    Updates: 1
+15:48:53:202  INFO 24868 --- [http-nio-8100-exec-3] o.javatop.big.controller.OssController   : ------OSS文件上传成功------https://gaoziman.oss-cn-hangzhou.aliyuncs.com/test/2023-12-01/013e1055f90648d7ba7a50082cfffb05.png
+15:48:54:255 DEBUG 24868 --- [http-nio-8100-exec-4] o.j.b.m.UserMapper.updateUserPicById     : ==>  Preparing: update `user` set user_pic=? where id=?
+15:48:54:255 DEBUG 24868 --- [http-nio-8100-exec-4] o.j.b.m.UserMapper.updateUserPicById     : ==> Parameters: https://gaoziman.oss-cn-hangzhou.aliyuncs.com/test/2023-12-01/013e1055f90648d7ba7a50082cfffb05.png(String), 18(Integer)
+15:48:54:259 DEBUG 24868 --- [http-nio-8100-exec-4] o.j.b.m.UserMapper.updateUserPicById     : <==    Updates: 1
+15:49:06:232  INFO 24868 --- [http-nio-8100-exec-5] o.javatop.big.controller.OssController   : ------OSS文件上传成功------https://gaoziman.oss-cn-hangzhou.aliyuncs.com/test/2023-12-01/aee2cc092a6845e9a98d824a77786286.png
+15:49:06:966 DEBUG 24868 --- [http-nio-8100-exec-9] o.j.b.m.UserMapper.updateUserPicById     : ==>  Preparing: update `user` set user_pic=? where id=?
+15:49:06:966 DEBUG 24868 --- [http-nio-8100-exec-9] o.j.b.m.UserMapper.updateUserPicById     : ==> Parameters: https://gaoziman.oss-cn-hangzhou.aliyuncs.com/test/2023-12-01/aee2cc092a6845e9a98d824a77786286.png(String), 18(Integer)
+15:49:06:968 DEBUG 24868 --- [http-nio-8100-exec-9] o.j.b.m.UserMapper.updateUserPicById     : <==    Updates: 1
+15:51:40:269  INFO 24868 --- [http-nio-8100-exec-7] o.javatop.big.controller.OssController   : ------OSS文件上传成功------https://gaoziman.oss-cn-hangzhou.aliyuncs.com/test/2023-12-01/664af87a258d4ddfbf17ef372a74442b.jpg
+15:51:42:506 DEBUG 24868 --- [http-nio-8100-exec-8] o.j.b.m.UserMapper.updateUserPicById     : ==>  Preparing: update `user` set user_pic=? where id=?
+15:51:42:507 DEBUG 24868 --- [http-nio-8100-exec-8] o.j.b.m.UserMapper.updateUserPicById     : ==> Parameters: https://gaoziman.oss-cn-hangzhou.aliyuncs.com/test/2023-12-01/664af87a258d4ddfbf17ef372a74442b.jpg(String), 18(Integer)
+15:51:42:509 DEBUG 24868 --- [http-nio-8100-exec-8] o.j.b.m.UserMapper.updateUserPicById     : <==    Updates: 1
+15:51:44:076 DEBUG 24868 --- [http-nio-8100-exec-6] o.j.b.m.C.selectListByCondition          : ==>  Preparing: select id, category_name, category_alias, create_user, create_time, update_time from category WHERE create_user = ?
+15:51:44:076 DEBUG 24868 --- [http-nio-8100-exec-6] o.j.b.m.C.selectListByCondition          : ==> Parameters: 18(Integer)
+15:51:44:089 DEBUG 24868 --- [http-nio-8100-exec-6] o.j.b.m.C.selectListByCondition          : <==      Total: 0
+15:51:44:725 DEBUG 24868 --- [http-nio-8100-exec-10] o.j.b.m.C.selectListByCondition          : ==>  Preparing: select id, category_name, category_alias, create_user, create_time, update_time from category WHERE create_user = ?
+15:51:44:725 DEBUG 24868 --- [http-nio-8100-exec-10] o.j.b.m.C.selectListByCondition          : ==> Parameters: 18(Integer)
+15:51:44:726 DEBUG 24868 --- [http-nio-8100-exec-10] o.j.b.m.C.selectListByCondition          : <==      Total: 0
+15:51:44:771 DEBUG 24868 --- [http-nio-8100-exec-1] .m.A.selectAllByCategoryIdAndState_COUNT : ==>  Preparing: SELECT count(0) FROM article WHERE `state` = ? AND `create_user` = ?
+15:51:44:771 DEBUG 24868 --- [http-nio-8100-exec-1] .m.A.selectAllByCategoryIdAndState_COUNT : ==> Parameters: 已发布(String), 18(Integer)
+15:51:44:773 DEBUG 24868 --- [http-nio-8100-exec-1] .m.A.selectAllByCategoryIdAndState_COUNT : <==      Total: 1
+15:51:47:830 DEBUG 24868 --- [http-nio-8100-exec-2] o.j.b.m.C.selectListByCondition          : ==>  Preparing: select id, category_name, category_alias, create_user, create_time, update_time from category WHERE create_user = ?
+15:51:47:830 DEBUG 24868 --- [http-nio-8100-exec-2] o.j.b.m.C.selectListByCondition          : ==> Parameters: 18(Integer)
+15:51:47:830 DEBUG 24868 --- [http-nio-8100-exec-2] o.j.b.m.C.selectListByCondition          : <==      Total: 0
+15:51:48:837 DEBUG 24868 --- [http-nio-8100-exec-3] o.j.b.m.C.selectListByCondition          : ==>  Preparing: select id, category_name, category_alias, create_user, create_time, update_time from category WHERE create_user = ?
+15:51:48:838 DEBUG 24868 --- [http-nio-8100-exec-3] o.j.b.m.C.selectListByCondition          : ==> Parameters: 18(Integer)
+15:51:48:839 DEBUG 24868 --- [http-nio-8100-exec-3] o.j.b.m.C.selectListByCondition          : <==      Total: 0
+15:52:03:718 DEBUG 24868 --- [http-nio-8100-exec-4] o.j.b.m.C.selectListByCondition          : ==>  Preparing: select id, category_name, category_alias, create_user, create_time, update_time from category WHERE create_user = ?
+15:52:03:718 DEBUG 24868 --- [http-nio-8100-exec-4] o.j.b.m.C.selectListByCondition          : ==> Parameters: 18(Integer)
+15:52:03:719 DEBUG 24868 --- [http-nio-8100-exec-4] o.j.b.m.C.selectListByCondition          : <==      Total: 0
+15:52:04:545 DEBUG 24868 --- [http-nio-8100-exec-5] o.j.b.m.C.selectListByCondition          : ==>  Preparing: select id, category_name, category_alias, create_user, create_time, update_time from category WHERE create_user = ?
+15:52:04:545 DEBUG 24868 --- [http-nio-8100-exec-5] o.j.b.m.C.selectListByCondition          : ==> Parameters: 18(Integer)
+15:52:04:546 DEBUG 24868 --- [http-nio-8100-exec-5] o.j.b.m.C.selectListByCondition          : <==      Total: 0
+15:52:43:833 DEBUG 24868 --- [http-nio-8100-exec-9] o.j.b.m.C.selectListByCondition          : ==>  Preparing: select id, category_name, category_alias, create_user, create_time, update_time from category WHERE create_user = ?
+15:52:43:835 DEBUG 24868 --- [http-nio-8100-exec-9] o.j.b.m.C.selectListByCondition          : ==> Parameters: 18(Integer)
+15:52:43:836 DEBUG 24868 --- [http-nio-8100-exec-9] o.j.b.m.C.selectListByCondition          : <==      Total: 0
+15:52:45:406 DEBUG 24868 --- [http-nio-8100-exec-7] o.j.b.m.C.selectListByCondition          : ==>  Preparing: select id, category_name, category_alias, create_user, create_time, update_time from category WHERE create_user = ?
+15:52:45:407 DEBUG 24868 --- [http-nio-8100-exec-7] o.j.b.m.C.selectListByCondition          : ==> Parameters: 18(Integer)
+15:52:45:408 DEBUG 24868 --- [http-nio-8100-exec-7] o.j.b.m.C.selectListByCondition          : <==      Total: 0
+15:52:52:333  INFO 24868 --- [http-nio-8100-exec-8] o.javatop.big.controller.OssController   : ------OSS文件上传成功------https://gaoziman.oss-cn-hangzhou.aliyuncs.com/test/2023-12-01/8b6d0291d685417a946fd78e4150edd0.jpg
+15:52:53:344 DEBUG 24868 --- [http-nio-8100-exec-6] o.j.b.m.UserMapper.updateUserPicById     : ==>  Preparing: update `user` set user_pic=? where id=?
+15:52:53:344 DEBUG 24868 --- [http-nio-8100-exec-6] o.j.b.m.UserMapper.updateUserPicById     : ==> Parameters: https://gaoziman.oss-cn-hangzhou.aliyuncs.com/test/2023-12-01/8b6d0291d685417a946fd78e4150edd0.jpg(String), 18(Integer)
+15:52:53:348 DEBUG 24868 --- [http-nio-8100-exec-6] o.j.b.m.UserMapper.updateUserPicById     : <==    Updates: 1
+16:16:15:525  INFO 24868 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+16:16:15:526  INFO 24868 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
