@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author : Leo
@@ -21,9 +22,9 @@ public class LoginController {
 
     @PostMapping("/login")
     public Result login(@RequestBody User user){
-        Integer code = 200;
+        int code = 200;
         String msg = "success";
-        Map map = new HashMap();
+        Map<String, Object> map = new HashMap<>();
         String accessToken = null;
         String refreshToken = null;
         if (user.getUsername().equals("admin") && user.getPassword().equals("123456")){
