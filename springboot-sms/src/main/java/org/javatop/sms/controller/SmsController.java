@@ -24,6 +24,11 @@ public class SmsController {
     @Autowired
     private SmsUtil smsUtil;
 
+    /**
+     * 生成手机验证码
+     * @param map Map对象
+     * @return {@link Result} 返回结果
+     */
     @PostMapping("/send")
     public Result sendSms(@RequestBody Map<String,String> map) {
         if (map.get("phone") == null) {
@@ -39,6 +44,11 @@ public class SmsController {
     }
 
 
+    /**
+     * 核验手机验证码
+     * @param map Map对象
+     * @return {@link Result} 返回结果
+     */
     @PostMapping("/validate")
     public Result validateSms(@RequestBody Map<String,String> map) {
         if (map.get("phone") == null) {
