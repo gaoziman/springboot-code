@@ -50,7 +50,7 @@ public class SmsUtil {
         String to = phone;
         String templateId= "1";
         // 使用hutool工具包生成四位随机数
-        cn.hutool.captcha.generator.RandomGenerator randomGenerator = new RandomGenerator("0123456789",4);
+        RandomGenerator randomGenerator = new RandomGenerator("0123456789",4);
         String randomNumber = randomGenerator.generate(); // 生成4位随机数
         Integer expire = 30; // 有效期
         String[] datas = {randomNumber,expire.toString()};

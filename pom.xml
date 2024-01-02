@@ -15,6 +15,7 @@
         <module>springboot-bigevent</module>
         <module>springboot-token-renewal</module>
         <module>springboot-sms</module>
+        <module>springboot-dynamic-sourse</module>
     </modules>
 
 
