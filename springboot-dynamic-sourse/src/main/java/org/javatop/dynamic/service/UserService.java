@@ -19,8 +19,8 @@ public class UserService{
     @Autowired
     private UserMapper userMapper;
 
-//    @DataSource("slave")
-    @DataSource
+    @DataSource("slave")
+//    @DataSource
     public List<User> getAll(){
         List<User> all = userMapper.getAll();
         return all;
