@@ -16,6 +16,7 @@
         <module>springboot-token-renewal</module>
         <module>springboot-sms</module>
         <module>springboot-dynamic-sourse</module>
+        <module>springboot-feature</module>
     </modules>
 
 

@@ -1,8 +1,16 @@
-11:14:57:548  INFO 6000 --- [main] org.javatop.dynamic.DynamicTest          : Starting DynamicTest using Java 17.0.9 with PID 6000 (started by Administrator in D:\IDEA Workplace\Leo-code\springboot-code\springboot-dynamic-sourse)
-11:14:57:559 DEBUG 6000 --- [main] org.javatop.dynamic.DynamicTest          : Running with Spring Boot v3.0.5, Spring v6.0.7
-11:14:57:559  INFO 6000 --- [main] org.javatop.dynamic.DynamicTest          : No active profile set, falling back to 1 default profile: "default"
-11:14:59:463  INFO 6000 --- [main] org.javatop.dynamic.DynamicTest          : Started DynamicTest in 2.246 seconds (process running for 3.055)
-11:15:00:389  INFO 6000 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-11:15:00:402 DEBUG 6000 --- [main] o.j.dynamic.mapper.UserMapper.getAll     : ==>  Preparing: select * from user
-11:15:00:423 DEBUG 6000 --- [main] o.j.dynamic.mapper.UserMapper.getAll     : ==> Parameters: 
-11:15:00:446 DEBUG 6000 --- [main] o.j.dynamic.mapper.UserMapper.getAll     : <==      Total: 1
+17:11:08:818  INFO 17544 --- [main] org.javatop.dynamic.DynamicTest          : Starting DynamicTest using Java 17.0.9 with PID 17544 (started by Administrator in D:\IDEA Workplace\Leo-code\springboot-code\springboot-dynamic-sourse)
+17:11:08:823 DEBUG 17544 --- [main] org.javatop.dynamic.DynamicTest          : Running with Spring Boot v3.0.5, Spring v6.0.7
+17:11:08:824  INFO 17544 --- [main] org.javatop.dynamic.DynamicTest          : No active profile set, falling back to 1 default profile: "default"
+17:11:10:303  INFO 17544 --- [main] org.javatop.dynamic.DynamicTest          : Started DynamicTest in 1.733 seconds (process running for 2.405)
+17:11:11:212  INFO 17544 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+17:11:11:220 DEBUG 17544 --- [main] o.j.dynamic.mapper.UserMapper.getAll     : ==>  Preparing: select * from user
+17:11:11:238 DEBUG 17544 --- [main] o.j.dynamic.mapper.UserMapper.getAll     : ==> Parameters: 
+17:11:11:260 DEBUG 17544 --- [main] o.j.dynamic.mapper.UserMapper.getAll     : <==      Total: 1
+17:11:37:398  INFO 27840 --- [main] org.javatop.dynamic.DynamicTest          : Starting DynamicTest using Java 17.0.9 with PID 27840 (started by Administrator in D:\IDEA Workplace\Leo-code\springboot-code\springboot-dynamic-sourse)
+17:11:37:399 DEBUG 27840 --- [main] org.javatop.dynamic.DynamicTest          : Running with Spring Boot v3.0.5, Spring v6.0.7
+17:11:37:399  INFO 27840 --- [main] org.javatop.dynamic.DynamicTest          : No active profile set, falling back to 1 default profile: "default"
+17:11:38:885  INFO 27840 --- [main] org.javatop.dynamic.DynamicTest          : Started DynamicTest in 1.764 seconds (process running for 2.345)
+17:11:39:614  INFO 27840 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+17:11:39:621 DEBUG 27840 --- [main] o.j.dynamic.mapper.UserMapper.getAll     : ==>  Preparing: select * from user
+17:11:39:637 DEBUG 27840 --- [main] o.j.dynamic.mapper.UserMapper.getAll     : ==> Parameters: 
+17:11:39:654 DEBUG 27840 --- [main] o.j.dynamic.mapper.UserMapper.getAll     : <==      Total: 1
