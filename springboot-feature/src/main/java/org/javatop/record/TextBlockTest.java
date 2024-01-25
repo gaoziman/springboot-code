@@ -94,7 +94,7 @@ public class TextBlockTest {
     public void test06() {
         String str = """
                 Spring Boot 是一个快速开发框架 \
-                基于\" Spring \"框架，创建 Spring 应用\s
+                基于\" Spring \"框架，创建 Spring 应用\
                 内嵌 Web 服务器，以 jar 或 war 方式运行 \
                                              """;
         System.out.println("str = " + str);
