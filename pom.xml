@@ -17,6 +17,7 @@
         <module>springboot-sms</module>
         <module>springboot-dynamic-sourse</module>
         <module>springboot-feature</module>
+        <module>springboot-idempotent</module>
     </modules>
 
 

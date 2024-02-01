@@ -1,18 +1,14 @@
 package org.javatop.big.interceptor;
 
 import cn.hutool.core.util.ObjectUtil;
-import com.google.common.base.Strings;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.javatop.big.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * @author : Leo
