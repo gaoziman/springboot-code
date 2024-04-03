@@ -44,13 +44,3 @@ logging:
     dateformat: HH:mm:ss:SSS
   file:
     path: "logs/${spring.application.name}"
-
-
-
-#阿里云文件上传
-aliyun:
-  oss:
-    endpoint: oss-cn-hangzhou.aliyuncs.com
-    keyid: LTAI5t982gXi7A72gAa9yugE
-    keysecret:  Mi9ZsSWLGkvFoMiLNiZ71hHFzVso30
-    bucketname: gaoziman
