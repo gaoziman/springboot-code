@@ -1,0 +1,5 @@
+server:
+  port: 18080
+
+file:
+  upload-dir: /Users/leo/Leo 工作区/IdeaProjects/Leo-code/Leo-springboot-code/springboot-fileuploud/src/main/resources/upload

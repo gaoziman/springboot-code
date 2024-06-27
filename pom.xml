@@ -18,6 +18,7 @@
         <module>springboot-dynamic-sourse</module>
         <module>springboot-feature</module>
         <module>springboot-idempotent</module>
+        <module>springboot-fileuploud</module>
     </modules>
 
 
