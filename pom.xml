@@ -6,7 +6,7 @@
 
 
     <groupId>org.javatop</groupId>
-    <artifactId>springboot-code</artifactId>
+    <artifactId>SpringBootCodes</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
@@ -19,6 +19,7 @@
         <module>springboot-feature</module>
         <module>springboot-idempotent</module>
         <module>springboot-fileuploud</module>
+        <module>springboot-mybatisplus</module>
     </modules>
 
 
