@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.leocoder.mybatisdemo.mapper.StudentMapper">
+    <resultMap id="StudentResultMap" type="org.leocoder.mybatisdemo.domain.Student">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <collection property="courses" column="id" select="selectCoursesByStudentId"/>
+    </resultMap>
+
+    <!-- 定义 StudentResultMap -->
+    <resultMap id="StudentResultMap2" type="org.leocoder.mybatisdemo.domain.Student">
+        <!-- 主键映射 -->
+        <id property="id" column="id" />
+
+        <!-- 普通属性映射 -->
+        <result property="name" column="name" />
+
+        <!-- 多对多关联映射 -->
+        <collection property="courses" ofType="org.leocoder.mybatisdemo.domain.Course">
+            <id property="id" column="course_id" />
+            <result property="name" column="course_name" />
+        </collection>
+    </resultMap>
+
+    <select id="selectStudentById" resultMap="StudentResultMap">
+        SELECT *
+        FROM Student
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectCoursesByStudentId" resultType="org.leocoder.mybatisdemo.domain.Course">
+        SELECT c.id, c.name
+        FROM Course c
+                 JOIN StudentCourse sc ON c.id = sc.course_id
+        WHERE sc.student_id = #{studentId}
+    </select>
+
+    <!-- 查询学生及其选修的课程 -->
+    <select id="selectStudentById2" resultMap="StudentResultMap">
+        SELECT s.id, s.name,
+        c.id AS course_id, c.name AS course_name
+        FROM Student s
+        LEFT JOIN StudentCourse sc ON s.id = sc.student_id
+        LEFT JOIN Course c ON sc.course_id = c.id
+        WHERE s.id = #{id}
+    </select>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.leocoder.mybatisdemo.mapper.UserMapper">
+    <resultMap id="UserResultMap" type="org.leocoder.mybatisdemo.domain.User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="email" column="email"/>
+        <association property="address" column="id" select="selectAddressByUserId"/>
+        <collection property="orders" column="id"   select="selectOrdersByUserId"/>
+    </resultMap>
+
+    <!-- 定义 UserResultMap -->
+    <resultMap id="UserResultMap2" type="org.leocoder.mybatisdemo.domain.User">
+        <!-- 主键映射 -->
+        <id property="id" column="id" />
+
+        <!-- 普通属性映射 -->
+        <result property="username" column="username" />
+        <result property="password" column="password" />
+        <result property="email" column="email" />
+
+        <!-- 一对一关联映射 -->
+        <association property="address" javaType="org.leocoder.mybatisdemo.domain.Address">
+            <id property="id" column="address_id" />
+            <result property="street" column="street" />
+            <result property="city" column="city" />
+            <result property="userId" column="user_id" /> <!-- 确保将 user_id 映射到 address.userId -->
+        </association>
+
+        <!-- 一对多关联映射 -->
+        <collection property="orders" ofType="org.leocoder.mybatisdemo.domain.Order">
+            <id property="id" column="order_id" />
+            <result property="orderDate" column="order_date" />
+            <result property="userId" column="user_id" /> <!-- 确保将 user_id 映射到 address.userId -->
+        </collection>
+    </resultMap>
+
+    <!-- 查询用户及其关联的地址和订单 -->
+    <select id="selectUserById2" resultMap="UserResultMap2">
+        SELECT u.id, u.username, u.password, u.email,
+        a.id AS address_id, a.street, a.city,a.user_id,
+        o.id AS order_id, o.order_date,o.user_id
+        FROM User u
+        LEFT JOIN Address a ON u.id = a.user_id
+        LEFT JOIN `Order` o ON u.id = o.user_id
+        WHERE u.id = #{id}
+    </select>
+
+    <select id="selectUserById" resultMap="UserResultMap">
+        SELECT *
+        FROM User
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectAddressByUserId" resultType="org.leocoder.mybatisdemo.domain.Address">
+        SELECT *
+        FROM Address
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="selectOrdersByUserId" resultType="org.leocoder.mybatisdemo.domain.Order">
+        SELECT *
+        FROM `Order`
+        WHERE user_id = #{userId}
+    </select>
+
+
+</mapper>

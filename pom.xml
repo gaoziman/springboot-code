@@ -20,6 +20,8 @@
         <module>springboot-idempotent</module>
         <module>springboot-fileuploud</module>
         <module>springboot-mybatisplus</module>
+        <module>springboot-easyexcel</module>
+        <module>MybatisDemos</module>
     </modules>
 
 
@@ -158,6 +160,5 @@
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>1.2.9</version>
             </dependency>
-        </dependencies>
-    </dependencyManagement>
+        </dependencies>    </dependencyManagement>
 </project>
