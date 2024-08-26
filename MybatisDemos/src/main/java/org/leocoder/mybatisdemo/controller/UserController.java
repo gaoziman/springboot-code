@@ -25,4 +25,10 @@ public class UserController {
     public User getUserById(@PathVariable Integer id) {
         return userService.getUserById(id);
     }
+
+
+    @GetMapping("/act/{id}")
+    public User getUserById3(@PathVariable Integer id) {
+        return userService.getUserById(id);
+    }
 }

@@ -3,6 +3,8 @@ package org.leocoder.mybatisdemo.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.leocoder.mybatisdemo.annotation.Desensitization;
+import org.leocoder.mybatisdemo.enums.DesensitizationTypeEnum;
 
 import java.util.List;
 
@@ -21,6 +23,8 @@ public class User {
     private Integer id;
     private String username;
     private String password;
+
+    @Desensitization(type = DesensitizationTypeEnum.EMAIL)
     private String email;
 
 
